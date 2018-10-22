@@ -15,10 +15,9 @@ class CreatePostsTables extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('title', 100)->default('');
+            $table->text('content');
+            $table->integer('user_id')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePostsTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('posts');
     }
 }

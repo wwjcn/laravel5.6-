@@ -3,52 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Post;
 
 class PostController extends Controller
 {
     //首页文章列表
     public function index()
     {
-        $posts = array(
-            [
-                'title' => 'title1111111111',
-                'content' => 'content1111111111'
-            ],
-            [
-                'title' => 'title22222222222',
-                'content' => 'content2222222222'
-            ],
-            [
-                'title' => 'title333333333',
-                'content' => 'content33333333'
-            ],
-            [
-                'title' => 'title444444444444',
-                'content' => 'content444444444444'
-            ],
-            [
-                'title' => 'title5555555555',
-                'content' => 'content5555555555'
-            ],
-            [
-                'title' => 'title666666666666',
-                'content' => 'content666666666666'
-            ],
-            [
-                'title' => 'title77777777777',
-                'content' => 'content77777777777'
-            ],
-        );
+        $posts = Post::orderBY('created_at', 'desc')->paginate(6);
         return view('post/index', compact('posts'));
     }
 
     //文章详情页
-    public function show()
+    public function show(Post $post)
     {
-        return view('post/show', array(
-            'title' => 'wwj',
-            'isShow' => false
-        ));
+        return view('post/show', compact('post'));
     }
 
     //创建文章页面
@@ -60,7 +29,12 @@ class PostController extends Controller
     //创建文章
     public function store()
     {
-        return ;
+        $this->validate(request(), [
+            'title' => 'required | string | max:100 | min:5',
+            'content' => 'required | string | min:10',
+        ]);
+        $return = Post::create(request(['title', 'content']));
+        return redirect('/posts');
     }
 
     //编辑文章页面
@@ -79,5 +53,11 @@ class PostController extends Controller
     public function delete()
     {
         return ;
+    }
+
+    //图片上传
+    public function imageUpload()
+    {
+        dd(request()->all());
     }
 }
