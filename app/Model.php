@@ -14,4 +14,6 @@ class Model extends BaseModel
 
     //可以注入数据字段
     //protected $fillable = ['title', 'content'];
+
+    //test
 }
