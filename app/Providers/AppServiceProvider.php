@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //注册观察者
+        //User::observe(UserObserver::class);
     }
 
     /**
