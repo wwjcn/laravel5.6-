@@ -45,6 +45,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+        @include('layout.error')
         <a href="/register" class="btn btn-lg btn-primary btn-block" type="submit">去注册>></a>
     </form>
 

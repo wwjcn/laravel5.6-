@@ -21,7 +21,7 @@ Route::get('/login', 'LoginController@index');
 //用户登陆
 Route::post('/login', 'LoginController@login');
 //注销
-Route::post('/logout', 'LoginController@logout');
+Route::get('/logout', 'LoginController@logout');
 //个人设置页面
 Route::get('/user/me/setting', 'UserController@setting');
 //个人设置操作

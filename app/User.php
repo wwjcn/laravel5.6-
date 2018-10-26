@@ -3,8 +3,9 @@
 namespace App;
 
 use \App\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     protected $fillable = [
         'name', 'email', 'password',
@@ -18,4 +19,9 @@ class User extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function post()
+    {
+        return $this->hasMany('App\Post', 'user_id', 'id');
+    }
 }
