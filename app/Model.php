@@ -69,4 +69,6 @@ class Model extends BaseModel
             $user->name = 'Guest Author';
         });
     }*/
+    //多对多
+//    belongsToMany()
 }
