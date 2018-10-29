@@ -57,7 +57,6 @@
                         <button class="btn btn-default" type="submit">提交</button>
                     </li>
                 </form>
-
             </ul>
         </div>
     </div><!-- /.blog-main -->
