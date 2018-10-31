@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth:web'], function(){
     /*---------------------文章模块start-----------------------*/
     //文章列表首页
     Route::get('/posts', 'PostController@index');
+    //文章搜索页
+    Route::get('/posts/search', 'PostController@search');
     //创建文章页面
     Route::get('/posts/create', 'PostController@create');
     //文章详情页
@@ -60,6 +62,7 @@ Route::group(['middleware' => 'auth:web'], function(){
     Route::get('/posts/{post}/zan', 'PostController@zan');
     Route::get('/posts/{post}/unzan', 'PostController@unzan');
     /*---------------------文章赞模块end-----------------------*/
+
 
 });
 

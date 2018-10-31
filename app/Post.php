@@ -3,6 +3,7 @@
 namespace App;
 
 use \App\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
@@ -14,6 +15,23 @@ class Post extends Model
 
     //可以注入数据字段
 //    protected $fillable = ['title', 'content'];
+
+    use Searchable;
+    //定义索引里面的type
+    public function searchableAs()
+    {
+        return "post";
+    }
+
+    //定义哪些字段需要搜索
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+            'content' => $this->content,
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id')->withDefault(function ($user) {
