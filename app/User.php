@@ -43,7 +43,7 @@ class User extends Authenticatable
     {
         $fan = new \App\Fan();
         $fan->star_id = $uid;
-        return $this->stars->save($fan);
+        return $this->stars()->save($fan);
     }
 
     //关注
@@ -51,7 +51,7 @@ class User extends Authenticatable
     {
         $fan = new \App\Fan();
         $fan->star_id = $uid;
-        return $this->stars->delete($fan);
+        return $this->stars()->delete($fan);
     }
 
     //当前用户是否被uid关注

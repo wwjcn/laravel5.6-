@@ -24,12 +24,17 @@ Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
 /*---------------------用户登陆注册模块end-----------------------*/
 
-Route::group(['middleware' => 'auth:web'], function(){
+//Route::group(['middleware' => 'auth:web'], function(){
     /*---------------------用户个人中心模块start-----------------------*/
     //个人设置页面
     Route::get('/user/me/setting', 'UserController@setting');
     //个人设置操作
-    Route::Post('/user/me/setting', 'UserController@settingStore');
+    Route::post('/user/me/setting', 'UserController@settingStore');
+    //个人中心
+    Route::get('/user/{user}', 'UserController@show');
+    //关注用户
+    Route::post('/user/{user}/fan', 'UserController@fan');
+    Route::post('/user/{user}/unfan', 'UserController@unfan');
     /*---------------------用户个人中心模块end-----------------------*/
 
 
@@ -63,6 +68,10 @@ Route::group(['middleware' => 'auth:web'], function(){
     Route::get('/posts/{post}/unzan', 'PostController@unzan');
     /*---------------------文章赞模块end-----------------------*/
 
+    /*---------------------专题详情页start-----------------------*/
+    Route::get('/topic/{topic}', 'TopicController@show');
+    /*---------------------专题详情页end-----------------------*/
 
-});
+
+//});
 

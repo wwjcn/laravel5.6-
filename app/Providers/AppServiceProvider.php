@@ -17,6 +17,12 @@ class AppServiceProvider extends ServiceProvider
         //注册观察者
         //User::observe(UserObserver::class);
         Schema::defaultStringLength(191);
+
+        \View::composer('layout.sidebar', function ($view){
+
+            $topics = \App\Topic::all();
+            $view->with('topics', $topics);
+        });
     }
 
     /**
