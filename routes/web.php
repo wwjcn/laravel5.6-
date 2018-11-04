@@ -20,11 +20,13 @@ Route::post('/register', 'RegisterController@register');
 Route::get('/login', 'LoginController@index');
 //用户登陆
 Route::post('/login', 'LoginController@login');
-//注销
-Route::get('/logout', 'LoginController@logout');
+
 /*---------------------用户登陆注册模块end-----------------------*/
 
-//Route::group(['middleware' => 'auth:web'], function(){
+Route::group(['middleware' => 'auth:web'], function(){
+
+    //注销
+    Route::get('/logout', 'LoginController@logout');
     /*---------------------用户个人中心模块start-----------------------*/
     //个人设置页面
     Route::get('/user/me/setting', 'UserController@setting');
@@ -70,8 +72,8 @@ Route::get('/logout', 'LoginController@logout');
 
     /*---------------------专题详情页start-----------------------*/
     Route::get('/topic/{topic}', 'TopicController@show');
+    Route::post('/topic/{topic}/submit', 'TopicController@submit');
     /*---------------------专题详情页end-----------------------*/
+});
 
-
-//});
-
+include_once 'admin.php';

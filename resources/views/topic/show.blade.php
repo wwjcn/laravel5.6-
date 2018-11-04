@@ -18,7 +18,8 @@
                     <h4 class="modal-title" id="myModalLabel">我的文章</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/topic/{{ $topic->id }}/submit">
+                    <form action="/topic/{{ $topic->id }}/submit" method="post">
+                        {{ csrf_field() }}
                         @foreach($myPosts as $post)
                             <div class="checkbox">
                                 <label>
