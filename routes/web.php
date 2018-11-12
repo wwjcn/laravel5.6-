@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', "LoginController@index");
 /*---------------------用户登陆注册模块start-----------------------*/
 //用户注册页面
 Route::get('/register', 'RegisterController@index');
@@ -20,13 +20,13 @@ Route::post('/register', 'RegisterController@register');
 Route::get('/login', 'LoginController@index');
 //用户登陆
 Route::post('/login', 'LoginController@login');
+//注销
+Route::get('/logout', 'LoginController@logout');
 
 /*---------------------用户登陆注册模块end-----------------------*/
 
 Route::group(['middleware' => 'auth:web'], function(){
 
-    //注销
-    Route::get('/logout', 'LoginController@logout');
     /*---------------------用户个人中心模块start-----------------------*/
     //个人设置页面
     Route::get('/user/me/setting', 'UserController@setting');

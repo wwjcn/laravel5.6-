@@ -16,18 +16,17 @@ class LoginController extends Controller
     public function login()
     {
         $this->validate(request(), [
-            'email' => 'required | email ',
-            'password' => 'required | min:6 | max:10',
+            'name' => 'required | min:2',
+            'password' => 'required | min:5 | max:10',
             'is_remember' => 'integer',
         ]);
 
-        $user['email'] = request('email');
+        $user['name'] = request('name');
         $user['password'] = request('password');
-        $is_remember = boolval(request('is_remember'));
-        if (\Auth::attempt($user, $is_remember)) {
-            return redirect('/posts');
+        if (\Auth::guard('admin')->attempt($user)) {
+            return redirect('/admin/home');
         }
-        return \Redirect::back()->withErrors('密码或邮箱不正确');
+        return \Redirect::back()->withErrors('用户名密码不匹配');
     }
 
     //注销
