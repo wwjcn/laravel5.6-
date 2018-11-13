@@ -17,11 +17,14 @@ Route::get('/register', 'RegisterController@index');
 //用户注册
 Route::post('/register', 'RegisterController@register');
 //用户登陆页面
-Route::get('/login', 'LoginController@index');
+Route::get('/login', 'LoginController@index')->name('login');
 //用户登陆
 Route::post('/login', 'LoginController@login');
 //注销
 Route::get('/logout', 'LoginController@logout');
+Route::get('/tttt',['as' => 'test', function(){
+    echo 66666666666666;
+}]);
 
 /*---------------------用户登陆注册模块end-----------------------*/
 

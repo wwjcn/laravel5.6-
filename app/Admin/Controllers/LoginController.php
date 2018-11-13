@@ -18,7 +18,6 @@ class LoginController extends Controller
         $this->validate(request(), [
             'name' => 'required | min:2',
             'password' => 'required | min:5 | max:10',
-            'is_remember' => 'integer',
         ]);
 
         $user['name'] = request('name');
@@ -32,7 +31,7 @@ class LoginController extends Controller
     //注销
     public function logout()
     {
-        \Auth::logout();
-        return redirect('/login');
+        \Auth::guard('admin')->logout();
+        return redirect('/admin/login');
     }
 }

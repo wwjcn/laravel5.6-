@@ -19,6 +19,11 @@
                 <a href="/admin/posts">
                     <i class="fa fa-dashboard"></i> <span>文章管理</span>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/posts"><i class="fa fa-circle-o"></i> 文章列表</a></li>
+                    <li><a href="/post/users"><i class="fa fa-circle-o"></i> 用户管理</a></li>
+                    <li><a href="/post/roles"><i class="fa fa-circle-o"></i> 角色管理</a></li>
+                </ul>
             </li>
             <li class="active treeview">
                 <a href="/admin/topics">
