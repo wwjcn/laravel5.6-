@@ -42,6 +42,9 @@
                     <a href="/admin/notices">
                         <i class="fa fa-dashboard"></i> <span>通知管理</span>
                     </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/admin/notices"><i class="fa fa-circle-o"></i> 通知列表</a></li>
+                    </ul>
                 </li>
             @endcan
         </ul>

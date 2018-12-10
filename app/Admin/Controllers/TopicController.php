@@ -7,7 +7,7 @@ use App\Topic;
 
 class TopicController extends Controller
 {
-    //管理员列表
+    //列表
     public function index()
     {
         $topics = Topic::orderBY('created_at', 'asc')->paginate(20);

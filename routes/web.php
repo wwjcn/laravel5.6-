@@ -77,6 +77,10 @@ Route::group(['middleware' => 'auth:web'], function(){
     Route::get('/topic/{topic}', 'TopicController@show');
     Route::post('/topic/{topic}/submit', 'TopicController@submit');
     /*---------------------专题详情页end-----------------------*/
+
+    /*----------------------通知start-------------------------*/
+    Route::get('/notices', 'NoticeController@index');
+    /*----------------------通知end-------------------------*/
 });
 
 include_once 'admin.php';
