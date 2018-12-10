@@ -32,7 +32,7 @@ class SendMessage implements ShouldQueue
         //通知每个用户系统消息
         $users = \App\User::all();
         foreach($users as $user) {
-            $user->addNotice($this->notice);
+            var_dump($user->addNotice($this->notice));
         }
     }
 }
