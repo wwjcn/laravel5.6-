@@ -29,11 +29,11 @@ class NoticeController extends Controller
             'content' => 'required | min:10',
         ]);
         $notice = Notice::create(request(['title', 'content']));
-//        $this->dispatch(new \App\Jobs\SendMessage($notice));
-        $users = \App\User::all();
+        $this->dispatch(new \App\Jobs\SendMessage($notice));
+        /*$users = \App\User::all();
         foreach($users as $user) {
             $user->addNotice($notice);
-        }
+        }*/
         return redirect('/admin/notices');
     }
 

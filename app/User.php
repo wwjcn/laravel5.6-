@@ -72,9 +72,11 @@ class User extends Authenticatable
         return $this->belongsToMany(\App\Notice::class, 'user_notice', 'user_id', 'notice_id')->withPivot(['user_id', 'notice_id']);
     }
 
-    //给用户增加通知
+    /*
+     * 增加通知
+     */
     public function addNotice($notice)
     {
-        return $this->notices()->save($notice);//detch删除
+        return $this->notices()->save($notice);
     }
 }

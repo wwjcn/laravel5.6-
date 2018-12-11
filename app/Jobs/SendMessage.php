@@ -12,6 +12,9 @@ class SendMessage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    public $tries = 1;
+    private $notice ;
+
     /**
      * Create a new job instance.
      *
@@ -32,7 +35,7 @@ class SendMessage implements ShouldQueue
         //通知每个用户系统消息
         $users = \App\User::all();
         foreach($users as $user) {
-            var_dump($user->addNotice($this->notice));
+            $user->addNotice($this->notice);
         }
     }
 }
