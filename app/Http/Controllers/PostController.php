@@ -20,7 +20,7 @@ class PostController extends Controller
         //$log->info('222222222', ['data' => 444444]);
         //也可以使用门脸模式
         //\log::info('33333333', ['data' => 555555]);
-        $posts = Post::orderBY('created_at', 'desc')->withCount(['comments', 'zans'])->paginate(6);
+        $posts = Post::orderBY('created_at', 'desc')->withCount(['comments', 'zans'])->with('user')->paginate(6);
         return view('post/index', compact('posts'));
     }
 
